@@ -28,15 +28,16 @@
 
 <header th:fragment="header">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/#">Fixed navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="/image/unam%20lgog.png" height="30" class="d-inline-block align-top" alt="">
+            Temas Especiales
+        </a>
+
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="navbar-text">
-                    <a class="nav-link" th:href="@{/logout}">Salir</a>
+                    <a class="nav-link" th:href="@{/josue}">Josué - Dinosaurios</a>
                 </li>
                 <li class="nav-item">
             <span class="navbar-brand mb-0">
@@ -45,9 +46,7 @@
                 </li>
 
                 <li class="navbar-text">
-            <span class="nav-link" th:text="${nombre}">
-            Navbar text with an inline element
-            </span>
+                    <a class="nav-link" th:href="@{/jorge}">Jorge - Boletos</a>
                 </li>
                 <li class="nav-item">
             <span class="navbar-brand mb-0">
