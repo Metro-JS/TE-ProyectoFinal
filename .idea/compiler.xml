@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for TE_ProyectoFinal_Jorge" enabled="true">
+      <profile name="Annotation profile for TE_ProyectoFinal" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -10,11 +10,13 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="TE_ProyectoFinal_Jorge" />
+        <module name="TE_ProyectoFinal" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="TE_ProyectoFinal" options="-parameters" />
       <module name="TE_ProyectoFinal_Jorge" options="-parameters" />
     </option>
   </component>
