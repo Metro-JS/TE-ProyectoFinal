@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mx.unam.aragon</groupId>
-    <artifactId>TE_ProyectoFinal_Jorge</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>TE_ProyectoFinal_Jorge</name>
-    <description>TE_ProyectoFinal_Jorge</description>
+    <artifactId>TE_ProyectoFinal</artifactId>
+    <version>1.0</version>
+    <name>TE_ProyectoFinal</name>
+    <description>TE_ProyectoFinal</description>
     <url/>
     <licenses>
         <license/>
