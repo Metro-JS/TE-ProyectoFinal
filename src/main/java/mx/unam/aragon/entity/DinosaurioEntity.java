@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class DinosaurioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_dinosario")
+    @Column(name = "id_dinosaurio")
     private Long id;
 
     @Column(name = "nombre")
@@ -29,10 +29,10 @@ public class DinosaurioEntity {
     @Column(name = "dieta")
     private String dieta;
 
-    @Column(name = "imagenUrl")
-    private String imagenUrl;
+    @Column(name = "periodo")
+    private String periodo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_periodo", nullable = false)
-    private PeriodoEntity periodo;
+    @Column(name = "url_foto")
+    private String urlFoto;
+
 }

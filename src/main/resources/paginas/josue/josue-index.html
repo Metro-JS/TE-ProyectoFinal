@@ -9,7 +9,39 @@
 
 <main class="container text-center" style="margin-top:75px">
   <div style="padding-top: 20px;"></div>
-  <h1>Josue</h1>
+  <h1 th:text="${contenido}"></h1>
+  <table th:if="${!lista.isEmpty()}" class="table table-striped table-hover table-sm">
+    <thead class="table-dark table-bordered">
+    <tr>
+      <th scope="col"> Nombre</th>
+      <th scope="col"> Locomoción</th>
+      <th scope="col"> Peso(KG)</th>
+      <th scope="col"> Dieta</th>
+      <th scope="col"> Periodo</th>
+      <th scope="col"> Imagen</th>
+      <th scope="col"> Acciones</th>
+      th
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ls: ${lista}">
+      <td th:text="${ls.nombre}"></td>
+      <td th:text="${ls.locomocion}"></td>
+      <td th:text="${ls.peso}"></td>
+      <td th:text="${ls.dieta}"></td>
+      <td th:text="${ls.periodo}"></td>
+      <td th:text="${ls.urlFoto}"></td>
+      <td>
+        <a th:href="@{/josue/modificar-dinosaurio/{id} (id=${ls.id})}"
+           class="btn btn-success">Modificar <i class="fas fa-pen-nib"
+                                                aria-hidden="true"></i> </a>
+        <a th:href="@{/josue/eliminar-dinosaurio/{id} (id=${ls.id})}"
+           class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"
+                                              aria-hidden="true"></i> </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
 </main>
 
