@@ -27,6 +27,9 @@ public class BoletoEntity {
     @Column(name = "folio")
     private String folio;
 
+    @Column(name = "urlfoto")
+    private String urlfoto;
+
     @ManyToOne
     @JoinColumn(name = "idtipo", nullable = false)
     private TipoBoletoEntity tipo;
