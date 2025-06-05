@@ -11,13 +11,9 @@
 
     <title>Temas Especiales</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
-
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap1.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/css/sticky-footer-navbar.css" rel="stylesheet">
 
     <link href="/css/custom.css" rel="stylesheet">
 
@@ -28,34 +24,39 @@
 
 <header th:fragment="header">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" th:href="@{/}">
             <img src="/image/unam%20lgog.png" height="30" class="d-inline-block align-top" alt="">
             Temas Especiales
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="navbar-text">
-                    <a class="nav-link" th:href="@{/josue}">Josué - Dinosaurios</a>
-                </li>
                 <li class="nav-item">
-            <span class="navbar-brand mb-0">
-              &Tab;
-            </span>
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Jorge
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Nuevo Boleto</a>
+                        <a class="dropdown-item" href="#">Consulta de Boletos</a>
+                    </div>
                 </li>
 
-                <li class="navbar-text">
-                    <a class="nav-link" th:href="@{/jorge}">Jorge - Boletos</a>
-                </li>
-                <li class="nav-item">
-            <span class="navbar-brand mb-0">
-            &Tab;
-            </span>
-                </li>
-                <li class="navbar-text">
-            <span class="nav-link" id="time">
-            </span>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Josue
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Nuevo</a>
+                        <a class="dropdown-item" href="#">Consulta de </a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -69,9 +70,10 @@
 
 </main>
 
-<footer class="footer" th:fragment="footer">
-    <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+<footer class="page-footer font-small fixed-bottom" th:fragment="footer">
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="/"> Ver pro</a>
     </div>
 </footer>
 
