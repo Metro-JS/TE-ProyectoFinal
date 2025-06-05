@@ -51,8 +51,8 @@
                         Josue
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Agregar Dino</a>
-                        <a class="dropdown-item" href="#">Tabla de Dinos</a>
+                        <a class="dropdown-item" th:href="@{/josue/agregar-dinosaurio}">Agregar Dino</a>
+                        <a class="dropdown-item" th:href="@{/josue/josue-index}">Tabla de Dinos</a>
                     </div>
                 </li>
             </ul>
@@ -67,7 +67,7 @@
 
 </main>
 
-<footer class="page-footer font-small fixed-bottom" th:fragment="footer">
+<footer class="page-footer font-small fixed-bottom bg-light border-top border-primary" th:fragment="footer">
     <div class="footer-copyright text-center py-3">
         Copyright © Jorge Jiménez y Josué Hernández. Proyecto final para Temas Especiales. Todos los derechos reservados. 2025 <br>
         <a href="/"> Ver en GitHub</a>

@@ -30,7 +30,9 @@
       <td th:text="${ls.peso}"></td>
       <td th:text="${ls.dieta}"></td>
       <td th:text="${ls.periodo}"></td>
-      <td th:text="${ls.urlFoto}"></td>
+      <td>
+        <img th:src="@{${ls.urlFoto}}" width="100"/>
+      </td>
       <td>
         <a th:href="@{/josue/modificar-dinosaurio/{id} (id=${ls.id})}"
            class="btn btn-success">Modificar <i class="fas fa-pen-nib"
