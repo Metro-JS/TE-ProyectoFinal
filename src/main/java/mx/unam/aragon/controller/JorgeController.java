@@ -84,10 +84,15 @@ public class JorgeController {
     }
 
 
+
+
     @GetMapping("/nuevoboleto")
     public String nuevo(Model model) {
         BoletoEntity boleto = new BoletoEntity();
+        List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
+        System.out.println(listaTipos);
         model.addAttribute("boleto", boleto);
+        model.addAttribute("tipos", listaTipos);
         model.addAttribute("contenido", "Nuevo boleto");
         return "jorge/boleto/nuevo";
     }
@@ -98,12 +103,29 @@ public class JorgeController {
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println("Error: " + error.getDefaultMessage());
             }
+            List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
+            model.addAttribute("boleto", boleto);
+            model.addAttribute("tipos", listaTipos);
+            model.addAttribute("contenido", "Alta boleto");
             return "jorge/boleto/nuevo";
         }
         //realiza el guardado
         model.addAttribute("contenido", "Se ha guardado el boleto");
         boletoService.save(boleto);
         return "jorge/boleto/nuevo";
+    }
+
+    @GetMapping("lista-boletos")
+    public String listaBoletos(Model model){
+        List<BoletoEntity> lista=boletoService.findAll();
+        //List<GeneroEntity> generos = generoService.findAll();
+        //List<DirectorEntity> directors = directorService.findAll();
+
+        //model.addAttribute("directo", directors);
+        //model.addAttribute("generoz", generos);
+        model.addAttribute("lista",lista);
+        model.addAttribute("contenido","Coleccion de Boletos");
+        return "jorge/boleto/lista-boletos";
     }
 
 
