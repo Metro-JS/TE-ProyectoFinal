@@ -41,8 +41,11 @@
                         Jorge
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Nuevo Boleto</a>
-                        <a class="dropdown-item" href="#">Consulta de Boletos</a>
+                        <a class="dropdown-item" th:href="@{jorge/nuevo-boleto}">Nuevo Boleto</a>
+                        <a class="dropdown-item" th:href="@{jorge/lista-boletos}">Consulta de Boletos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" th:href="@{jorge/nuevo-tipo}">Nuevo Tipo Boleto</a>
+                        <a class="dropdown-item" th:href="@{jorge/lista-tipos}">Consulta de Tipos de Boleto</a>
                     </div>
                 </li>
 
