@@ -20,12 +20,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <img alt="Bootstrap Image Preview" src="/image/configbol.png" width="100" />
+        <img alt="Bootstrap Image Preview" src="/image/bol.png" width="100" />
       </div>
       <div class="col-md-6">
-        <h3 class="text-center text-primary">
-          Lista de tipos de boleto
-        </h3>
+        <h1 class="text-center text-primary">
+          Colección de Boletos
+        </h1>
       </div>
       <div class="col-md-3">
       </div>
@@ -45,6 +45,7 @@
             </h6>
             <p th:text="|Boleto ${ls.numero} de 5|"> det</p>
             <p th:text="|Tipo: ${ls.tipo.nombre}|"> det</p>
+            <p th:text="${ls.descripcion}"> det</p>
             <p>
               <a class="btn btn-primary" th:href="@{/jorge/modificar-boleto/{id} (id=${ls.id})}">Modificar</a>
               <a class="btn btn-primary" th:href="@{/jorge/eliminar-boleto/{id} (id=${ls.id})}">Eliminar</a>

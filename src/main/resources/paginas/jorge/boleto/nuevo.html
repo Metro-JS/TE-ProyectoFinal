@@ -86,6 +86,14 @@
                         placeholder="2">
                 <label for="numero">Posición del boleto (número)</label>
               </div>
+              <div class="form-floating">
+                <textarea class="form-control"
+                        id="descripcion"
+                        name="descripcion"
+                        rows="2"
+                        th:field="*{descripcion}"></textarea>
+                <label for="descripcion">descripcion</label>
+              </div>
 
               <select
                       th:class="${#fields.hasErrors('tipo')}? 'form-control is-invalid':form-control"

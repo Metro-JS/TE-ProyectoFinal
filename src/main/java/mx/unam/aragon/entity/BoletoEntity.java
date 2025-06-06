@@ -46,6 +46,9 @@ public class BoletoEntity {
     @NotNull(message = "numero no debe ser vacio")
     private Integer numero;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @ManyToOne
     @JoinColumn(name = "idtipo", nullable = false)
     private TipoBoletoEntity tipo;
