@@ -27,7 +27,7 @@ public class BoletoEntity {
 
     @Column(name = "lote")
     @NotBlank
-    @Size(min = 5, max = 7, message = "El lote debe tener entre 5 y 7 caracteres")
+    @Size(min = 4, max = 7, message = "El lote debe tener entre 4 y 7 caracteres")
     @Pattern(regexp = "[A-Za-z]+-[A-Za-z]+", message = "el lote debe tener formato AA-XVA, incluyendo el guion")
     private String lote;
 
@@ -43,6 +43,7 @@ public class BoletoEntity {
     @Column(name = "numero")
     @Min(value = 1, message = "La tira de boletos se compone solo de 5 boletos")
     @Max(value = 5, message = "La tira de boletos se compone solo de 5 boletos")
+    @NotNull(message = "numero no debe ser vacio")
     private Integer numero;
 
     @ManyToOne

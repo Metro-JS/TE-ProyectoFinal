@@ -93,23 +93,27 @@ public class JorgeController {
         System.out.println(listaTipos);
         model.addAttribute("boleto", boleto);
         model.addAttribute("tipos", listaTipos);
+        model.addAttribute("imagen", "/image/nuevobol.png");
         model.addAttribute("contenido", "Nuevo boleto");
         return "jorge/boleto/nuevo";
     }
 
     @PostMapping("guardar-boleto")
     public String guardarBoleto(@Valid @ModelAttribute(value = "boleto") BoletoEntity boleto, BindingResult result, Model model) {
+        List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
         if (result.hasErrors()) {
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println("Error: " + error.getDefaultMessage());
             }
-            List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
+            model.addAttribute("imagen", "/image/configbol.png");
             model.addAttribute("boleto", boleto);
             model.addAttribute("tipos", listaTipos);
             model.addAttribute("contenido", "Alta boleto");
             return "jorge/boleto/nuevo";
         }
         //realiza el guardado
+        model.addAttribute("imagen", "/image/okbol.png");
+        model.addAttribute("tipos", listaTipos);
         model.addAttribute("contenido", "Se ha guardado el boleto");
         boletoService.save(boleto);
         return "jorge/boleto/nuevo";

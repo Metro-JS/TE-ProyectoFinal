@@ -30,33 +30,26 @@
       <div class="col-md-3">
       </div>
     </div>
-    <div class="row">
+    <div class="row" th:if="${!lista.isEmpty()}">
       <div class="col-md-2">
       </div>
-      <div class="col-md-8">
-        <table th:if="${!lista.isEmpty()}" class="table table-striped table-hover table-sm">
-          <thead class="table-dark table-bordered">
-          <tr>
-            <th scope="col"> Nombre</th>
-            <th scope="col"> Descripcion</th>
-            <th scope="col"> Operaciones</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="ls: ${lista}">
-            <td th:text="${ls.nombre}"></td>
-            <td th:text="${ls.descripcion}"></td>
-            <td>
-              <a th:href="@{/jorge/modificar-tipo/{id} (id=${ls.id})}"
-                 class="btn btn-success">Modificar <i class="fas fa-pen-nib"
-                                                      aria-hidden="true"></i> </a>
-              <a th:href="@{/jorge/eliminar-tipo/{id} (id=${ls.id})}"
-                 class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"
-                                                    aria-hidden="true"></i> </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="col-md-8 card-deck">
+        <div class="card" th:each="ls: ${lista}">
+          <img class="card-img-top" alt="Bootstrap Thumbnail First" th:src="${ls.urlfoto}"/>
+          <div class="card-block">
+            <h4 class="card-title" th:text="|${ls.lote} - ${ls.anyo}|">
+              ANO
+            </h4>
+            <h6 class="card-title" th:text="|Folio: ${ls.folio}|">
+              Presenta:
+            </h6>
+            <p th:text="|Boleto ${ls.numero} de 5|"> det</p>
+            <p>
+              <a class="btn btn-primary" th:href="@{/modificar-boleto/{id} (id=${ls.id})}">Modificar</a>
+              <a class="btn btn-primary" th:href="@{/eliminar-boleto/{id} (id=${ls.id})}">Eliminar</a>
+            </p>
+          </div>
+        </div>
       </div>
       <div class="col-md-2">
       </div>
