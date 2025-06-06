@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Controller
@@ -56,13 +57,22 @@ public class JorgeController {
     }
 
     @GetMapping("modificar-tipo/{id}")
-    public String modificar(@PathVariable("id")Long id,
+    public String modificarTipo(@PathVariable("id")Long id,
                             Model model){
         TipoBoletoEntity tipoBoleto = tipoBoletoService.findById(id);
         model.addAttribute("tipoBoleto", tipoBoleto);
         model.addAttribute("contenido","Modificar tipo");
         model.addAttribute("imagen", "/image/configbol.png");
         return "jorge/tipo/nuevo-tipo";
+
+    }
+
+    //eliminar
+    @GetMapping("eliminar-tipo/{id}")
+    public String deleteTipo(@PathVariable("id")Long id,
+                         Model model){
+        tipoBoletoService.delete(id);
+        return "redirect:/jorge/lista-tipos?ok";
 
     }
 
@@ -94,5 +104,12 @@ public class JorgeController {
         model.addAttribute("contenido", "Se ha guardado el boleto");
         boletoService.save(boleto);
         return "jorge/boleto/nuevo";
+    }
+
+
+    //excepcion en caso de borar un directgor dentro de una pelicula
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public String handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex){
+        return "redirect:/jorge/lista-tipos?err";
     }
 }
