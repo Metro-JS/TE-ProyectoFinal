@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:replace="~{plantillas/plantilla :: head}">
+    <title>FOKIN LOGIN</title>
+</head>
+<body>
+<header th:replace="~{plantillas/plantilla :: header}"></header>
+
+<main class="container text-center" style="margin-top:75px; margin-bottom: 125px;">
+    <div style="padding-top: 20px;"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <img alt="Bootstrap Image Preview" src="/image/nuevobol.png" width="100"/>
+            </div>
+            <div class="col-md-6">
+                <h3 th:text="${contenido}" class="text-center text-primary">
+                    Alta de tipo de boleto
+                </h3>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <form method="post" th:action="@{/jorge/guardar-tipo}" th:object="${tipoBoleto}" >
+                    <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
+                        Verifique los siguientes inconvenientes
+                        <ul>
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input
+                                        th:class="${#fields.hasErrors('nombre')}? 'form-control is-invalid':form-control"
+                                        type="text" id="nombre"
+                                        name="nombre"
+                                        th:field="*{nombre}"
+                                        placeholder="Conmemorativo">
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="form-floating">
+                                <input
+                                        th:class="${#fields.hasErrors('descripcion')}? 'form-control is-invalid':form-control"
+                                        type="text" id="descripcion"
+                                        name="descripcion"
+                                        th:field="*{descripcion}"
+                                        placeholder="Tiene plasmada una fecha importante">
+                                <label for="descripcion">Descripcion</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <br/>
+                        <button th:disabled="${disabled}" type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+                    <input type="hidden" name="id" th:value="${id}"/>
+                </form>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{plantillas/plantilla :: footer}"></footer>
+<div th:replace="~{plantillas/plantilla :: jsimports}"></div>
+</body>
+</html>
