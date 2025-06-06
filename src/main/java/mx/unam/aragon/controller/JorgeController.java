@@ -10,10 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/jorge")
@@ -35,6 +34,7 @@ public class JorgeController {
         TipoBoletoEntity tipoBoleto = new TipoBoletoEntity();
         model.addAttribute("tipoBoleto", tipoBoleto);
         model.addAttribute("contenido", "Nuevo tipo");
+        model.addAttribute("imagen", "/image/nuevobol.png");
         return "jorge/tipo/nuevo-tipo";
     }
 
@@ -44,14 +44,35 @@ public class JorgeController {
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println("Error: " + error.getDefaultMessage());
             }
+            model.addAttribute("imagen", "/image/configbol.png");
             model.addAttribute("contenido", "Nuevo tipo");
             return "jorge/tipo/nuevo-tipo";
         }
         //realiza el guardado
+        model.addAttribute("imagen", "/image/okbol.png");
         model.addAttribute("contenido", "Se ha guardado el tipo de boleto");
         tipoBoletoService.save(tipoBoleto);
         return "jorge/tipo/nuevo-tipo";
     }
+
+    @GetMapping("modificar-tipo/{id}")
+    public String modificar(@PathVariable("id")Long id,
+                            Model model){
+        TipoBoletoEntity tipoBoleto = tipoBoletoService.findById(id);
+        model.addAttribute("tipoBoleto", tipoBoleto);
+        model.addAttribute("contenido","Modificar tipo");
+        model.addAttribute("imagen", "/image/configbol.png");
+        return "jorge/tipo/nuevo-tipo";
+
+    }
+
+    @GetMapping("/lista-tipos")
+    public String listaTipos(Model model){
+        List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
+        model.addAttribute("lista",listaTipos);
+        return "jorge/tipo/lista-tipos";
+    }
+
 
     @GetMapping("/nuevoboleto")
     public String nuevo(Model model) {
