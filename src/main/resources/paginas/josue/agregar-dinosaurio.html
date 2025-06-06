@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="es">
 <head th:replace="~{plantillas/plantilla :: head}">
-    <title>FOKIN LOGIN</title>
+    <title>Pos nomas</title>
 </head>
 <body>
 <header th:replace="~{plantillas/plantilla :: header}"></header>
@@ -10,6 +10,87 @@
 <main class="container text-center" style="margin-top:75px">
     <div style="padding-top: 20px;"></div>
     <h1 th:text="${contenido}"></h1>
+    <form method="post" th:action="@{guardar-dinosaurio}" th:object="${dinosaurio}" >
+        <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
+            Verifique los siguientes inconvenientes
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+            </ul>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="nombre" class="col-sm-3 col-form-label">Nombre:</label>
+                    <input
+                            th:class="${#fields.hasErrors('nombre')}? 'form-control is-invalid':form-control"
+                            type="text" id="nombre"
+                            name="nombre"
+                            th:field="*{nombre}"
+                            placeholder="Tragasaurus">
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="locomocion" class="col-sm-3 col-form-label">Locomocion:</label>
+                    <input
+                            th:class="${#fields.hasErrors('locomocion')}? 'form-control is-invalid':form-control"
+                            type="text" id="locomocion"
+                            name="locomocion"
+                            th:field="*{locomocion}"
+                            placeholder="Cuadrupedo y Bipedo">
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="peso" class="col-sm-3 col-form-label">Peso:</label>
+                    <input
+                            th:class="${#fields.hasErrors('peso')}? 'form-control is-invalid':form-control"
+                            type="text" id="peso"
+                            name="peso"
+                            th:field="*{peso}"
+                            placeholder="Peso en KG">
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="dieta" class="col-sm-3 col-form-label">Dieta:</label>
+                    <input
+                            th:class="${#fields.hasErrors('dieta')}? 'form-control is-invalid':form-control"
+                            type="text" id="dieta"
+                            name="dieta"
+                            th:field="*{dieta}"
+                            placeholder="Carnívoro o Herbívoro">
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="periodo" class="col-sm-3 col-form-label">Periodo:</label>
+                    <input
+                            th:class="${#fields.hasErrors('periodo')}? 'form-control is-invalid':form-control"
+                            type="text" id="periodo"
+                            name="periodo"
+                            th:field="*{periodo}"
+                            placeholder="Triásico, Jurásico o Cretácico">
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-floating">
+                    <label for="urlFoto" class="col-sm-3 col-form-label">URL de la imagen:</label>
+                    <input
+                            th:class="${#fields.hasErrors('urlFoto')}? 'form-control is-invalid':form-control"
+                            type="text" id="urlFoto"
+                            name="urlFoto"
+                            th:field="*{urlFoto}"
+                            placeholder="Preferencia que termine con png, jpg y jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <br/>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        <input type="hidden" name="id" th:value="${id}"/>
+    </form>
 
 </main>
 

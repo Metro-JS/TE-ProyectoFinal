@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,8 +35,8 @@ public class JosueController{
     }
 
     @PostMapping("guardar-dinosaurio")
-    public String guardarDirector(@Valid @ModelAttribute(value = "director") DinosaurioEntity dinosaurio,
-                                  BindingResult result, Model model){
+    public String guardarDinosaurio(@Valid @ModelAttribute(value = "dinosaurio") DinosaurioEntity dinosaurio,
+                                    BindingResult result, Model model){
         if (result.hasErrors()) {
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println("Error: " + error.getDefaultMessage());
@@ -49,6 +46,23 @@ public class JosueController{
         //realizar la lògica de negocio
         dinosaurioService.save(dinosaurio);
         model.addAttribute("contenido","Se almaceno con exito");
+        return "josue/agregar-dinosaurio";
+    }
+
+    @GetMapping("eliminar-dinosaurio/{id}")
+    public String delete(@PathVariable("id")Long id,
+                         Model model){
+        dinosaurioService.deleteById(id);
+        return "redirect:/josue/josue-index";
+
+    }
+
+    @GetMapping("modificar-dinosaurio/{id}")
+    public String modificar(@PathVariable("id")Long id,
+                           Model model){
+        DinosaurioEntity dinosaurio=dinosaurioService.findById(id);
+        model.addAttribute("dinosaurio",dinosaurio);
+        model.addAttribute("contenido","Alterar datos del dinosaurio");
         return "josue/agregar-dinosaurio";
     }
 }
