@@ -29,6 +29,11 @@ public class JorgeController {
         return "jorge/jorge-index";
     }
 
+    @GetMapping("/")
+    public String jorgeR(Model model) {
+        return "redirect:/jorge";
+    }
+
 
     @GetMapping("/nuevotipo")
     public String nuevoTipo(Model model) {
@@ -154,7 +159,7 @@ public class JorgeController {
     }
 
 
-    //excepcion en caso de borar un directgor dentro de una pelicula
+    //excepcion en caso de borar un tipo de boleto asignado a un boleto
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public String handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex){
         return "redirect:/jorge/lista-tipos?err";
