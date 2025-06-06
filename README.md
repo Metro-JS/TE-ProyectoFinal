@@ -13,3 +13,5 @@ Por el momento sería todo, de parte de nuestro equipo conformado por:
 - Josué Hernández Rosas
 
 Del grupo 2012
+
+Se adjunta en el presente repositorio el Script SQL para implementarlo en una base de datos MySQL
