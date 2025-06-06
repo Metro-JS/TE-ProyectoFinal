@@ -31,7 +31,7 @@ public class BoletoServiceImpl implements BoletoService {
     }
 
     @Override
-    public void delete(BoletoEntity boletoEntity) {
-        boletoRepository.delete(boletoEntity);
+    public void delete(Long id) {
+        boletoRepository.deleteById(id);
     }
 }

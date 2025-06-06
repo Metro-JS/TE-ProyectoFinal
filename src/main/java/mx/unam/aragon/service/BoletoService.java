@@ -9,5 +9,5 @@ public interface BoletoService {
     BoletoEntity save(BoletoEntity boletoEntity);
     BoletoEntity findById(Long id);
     List<BoletoEntity> findAll();
-    void delete(BoletoEntity boletoEntity);
+    void delete(Long id);
 }

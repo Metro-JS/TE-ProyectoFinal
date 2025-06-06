@@ -31,8 +31,8 @@ public class TipoBoletoServiceImpl implements TipoBoletoService {
     }
 
     @Override
-    public void delete(TipoBoletoEntity tipoBoletoEntity) {
-        tipoBoletoRepository.delete(tipoBoletoEntity);
+    public void delete(Long id) {
+        tipoBoletoRepository.deleteById(id);
 
     }
 }

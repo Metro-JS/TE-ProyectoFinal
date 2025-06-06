@@ -8,5 +8,5 @@ public interface TipoBoletoService {
     TipoBoletoEntity save(TipoBoletoEntity tipoBoletoEntity);
     TipoBoletoEntity findById(Long id);
     List<TipoBoletoEntity> findAll();
-    void delete(TipoBoletoEntity tipoBoletoEntity);
+    void delete(Long id);
 }
