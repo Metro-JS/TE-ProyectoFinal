@@ -23,17 +23,21 @@ USE `temasfinal`;
 -- Volcando estructura para tabla temasfinal.boleto
 DROP TABLE IF EXISTS `boleto`;
 CREATE TABLE IF NOT EXISTS `boleto` (
-  `idboleto` int NOT NULL AUTO_INCREMENT,
-  `anyo` int NOT NULL,
-  `lote` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `folio` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `idtipo` int NOT NULL,
-  `urlfoto` varchar(255) NOT NULL,
-  `numero` int NOT NULL DEFAULT (0),
-  PRIMARY KEY (`idboleto`),
-  KEY `idtipo` (`idtipo`),
-  CONSTRAINT `boleto_ibfk_1` FOREIGN KEY (`idtipo`) REFERENCES `tipoboleto` (`idtipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+	`idboleto` INT NOT NULL AUTO_INCREMENT,
+	`anyo` INT NOT NULL,
+	`lote` VARCHAR(7) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`folio` VARCHAR(6) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`idtipo` INT NOT NULL,
+	`urlfoto` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`numero` INT NOT NULL DEFAULT '0',
+	`descripcion` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`idboleto`) USING BTREE,
+	INDEX `idtipo` (`idtipo`) USING BTREE,
+	CONSTRAINT `boleto_ibfk_1` FOREIGN KEY (`idtipo`) REFERENCES `tipoboleto` (`idtipo`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
 
 -- Volcando datos para la tabla temasfinal.boleto: ~2 rows (aproximadamente)
 DELETE FROM `boleto`;
