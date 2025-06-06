@@ -13,11 +13,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <img alt="Bootstrap Image Preview" src="/img/sports-q-c-140-140-3.jpg" />
+        <img alt="Bootstrap Image Preview" th:src="${imagen}" width="100"/>
       </div>
       <div class="col-md-6">
-        <h3 class="text-center text-primary">
-          h3. Lorem ipsum dolor sit amet.
+        <h3 th:text="${contenido}" class="text-center text-primary">
+          Alta de tipo de boleto
         </h3>
       </div>
       <div class="col-md-3">
@@ -38,13 +38,67 @@
             <div class="col-6">
               <div class="form-floating">
                 <input
-                        th:class="${#fields.hasErrors('descripcion')}? 'form-control is-invalid':form-control"
-                        type="text" id="descripcion"
-                        name="nombre"
-                        th:field="*{descripcion}"
-                        placeholder="Jose Ramon">
-                <label for="descripcion">descripcion:</label>
+                        th:class="${#fields.hasErrors('anyo')}? 'form-control is-invalid':form-control"
+                        type="number" id="anyo"
+                        name="anyo"
+                        th:field="*{anyo}"
+                        placeholder="anyo">
+                <label for="anyo">anyo</label>
               </div>
+
+              <div class="form-floating">
+                <input
+                        th:class="${#fields.hasErrors('lote')}? 'form-control is-invalid':form-control"
+                        type="text" id="lote"
+                        name="lote"
+                        th:field="*{lote}"
+                        placeholder="lote">
+                <label for="lote">lote</label>
+              </div>
+
+              <div class="form-floating">
+                <input
+                        th:class="${#fields.hasErrors('folio')}? 'form-control is-invalid':form-control"
+                        type="text" id="folio"
+                        name="folio"
+                        th:field="*{folio}"
+                        placeholder="folio">
+                <label for="folio">folio</label>
+              </div>
+
+              <div class="form-floating">
+                <input
+                        th:class="${#fields.hasErrors('urlfoto')}? 'form-control is-invalid':form-control"
+                        type="text" id="urlfoto"
+                        name="urlfoto"
+                        th:field="*{urlfoto}"
+                        placeholder="urlfoto">
+                <label for="urlfoto">urlfoto</label>
+              </div>
+
+              <div class="form-floating">
+                <input
+                        th:class="${#fields.hasErrors('numero')}? 'form-control is-invalid':form-control"
+                        type="number" id="numero"
+                        name="numero"
+                        th:field="*{numero}"
+                        placeholder="numero">
+                <label for="numero">numero</label>
+              </div>
+
+              <select
+                      th:class="${#fields.hasErrors('tipo')}? 'form-control is-invalid':form-control"
+                      name="tipo" id="tipo" th:field="*{tipo}">
+                <option th:each="g : ${tipos}"
+                        th:value="${g.id}"
+                        th:selected="${g.id==1}"
+                        th:text="${g.nombre}">
+                </option>
+                <label for="tipo">Tipo de boleto</label>
+              </select>
+
+
+
             </div>
           </div>
           <div class="col-8">
