@@ -28,7 +28,7 @@ public class BoletoEntity {
     @Column(name = "lote")
     @NotBlank
     @Size(min = 4, max = 7, message = "El lote debe tener entre 4 y 7 caracteres")
-    @Pattern(regexp = "[A-Za-z]+-[A-Za-z]+", message = "el lote debe tener formato AA-XVA, incluyendo el guion")
+    @Pattern(regexp = "[A-Z]+-[A-Z]+", message = "el lote debe tener formato AA-XVA, incluyendo el guion, con Mayusculas")
     private String lote;
 
     @Column(name = "folio")

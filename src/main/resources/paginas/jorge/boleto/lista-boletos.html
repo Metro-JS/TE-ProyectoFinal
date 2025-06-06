@@ -44,9 +44,10 @@
               Presenta:
             </h6>
             <p th:text="|Boleto ${ls.numero} de 5|"> det</p>
+            <p th:text="|Tipo: ${ls.tipo.nombre}|"> det</p>
             <p>
-              <a class="btn btn-primary" th:href="@{/modificar-boleto/{id} (id=${ls.id})}">Modificar</a>
-              <a class="btn btn-primary" th:href="@{/eliminar-boleto/{id} (id=${ls.id})}">Eliminar</a>
+              <a class="btn btn-primary" th:href="@{/jorge/modificar-boleto/{id} (id=${ls.id})}">Modificar</a>
+              <a class="btn btn-primary" th:href="@{/jorge/eliminar-boleto/{id} (id=${ls.id})}">Eliminar</a>
             </p>
           </div>
         </div>

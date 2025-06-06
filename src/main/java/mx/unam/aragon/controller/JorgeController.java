@@ -132,6 +132,27 @@ public class JorgeController {
         return "jorge/boleto/lista-boletos";
     }
 
+    @GetMapping("modificar-boleto/{id}")
+    public String modificarBoleto(@PathVariable("id")Long id,
+                                Model model){
+        BoletoEntity boleto = boletoService.findById(id);
+        List<TipoBoletoEntity> listaTipos = tipoBoletoService.findAll();
+        System.out.println(listaTipos);
+        model.addAttribute("boleto", boleto);
+        model.addAttribute("tipos", listaTipos);
+        model.addAttribute("imagen", "/image/configbol.png");
+        model.addAttribute("contenido", "Modificar boleto");
+        return "jorge/boleto/nuevo";
+
+    }
+    @GetMapping("eliminar-boleto/{id}")
+    public String deleteBoleto(@PathVariable("id")Long id,
+                             Model model){
+        boletoService.delete(id);
+        return "redirect:/jorge/lista-boletos?ok";
+
+    }
+
 
     //excepcion en caso de borar un directgor dentro de una pelicula
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
