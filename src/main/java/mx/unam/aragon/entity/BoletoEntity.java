@@ -1,9 +1,7 @@
 package mx.unam.aragon.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,16 +26,23 @@ public class BoletoEntity {
     private Integer anyo;
 
     @Column(name = "lote")
-
+    @NotBlank
+    @Size(min = 5, max = 7, message = "El lote debe tener entre 5 y 7 caracteres")
+    @Pattern(regexp = "[A-Za-z]+-[A-Za-z]+", message = "el lote debe tener formato AA-XVA, incluyendo el guion")
     private String lote;
 
     @Column(name = "folio")
+    @NotBlank
+    @Size(min = 5, max = 6, message = "El folio debe tener entre 5 y 6 digitos")
     private String folio;
 
     @Column(name = "urlfoto")
+    @NotBlank(message = "La imagen debe ser un enlace http valido")
     private String urlfoto;
 
     @Column(name = "numero")
+    @Min(value = 1, message = "La tira de boletos se compone solo de 5 boletos")
+    @Max(value = 5, message = "La tira de boletos se compone solo de 5 boletos")
     private Integer numero;
 
     @ManyToOne
