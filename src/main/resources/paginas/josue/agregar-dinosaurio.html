@@ -10,7 +10,7 @@
 <main class="container text-center" style="margin-top:75px">
     <div style="padding-top: 20px;"></div>
     <h1 th:text="${contenido}"></h1>
-    <form method="post" th:action="@{guardar-dinosaurio}" th:object="${dinosaurio}" >
+    <form method="post" th:action="@{/josue/guardar-dinosaurio}" th:object="${dinosaurio}" >
         <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
             Verifique los siguientes inconvenientes
             <ul>
